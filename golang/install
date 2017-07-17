@@ -1,0 +1,37 @@
+#!/bin/bash
+
+sudo apt install golang
+
+#CREATING AND ADDING GOPATH STUFF
+mkdir -p ~/.gopath/bin
+
+echo "
+export PATH=$PATH:$HOME/.gopath/bin
+export GOPATH=$HOME/.gopath
+export GOBIN=$HOME/.gopath/bin
+" >> ~/.bashrc
+
+export PATH=$PATH:$HOME/.gopath/bin
+export GOPATH=$HOME/.gopath
+export GOBIN=$HOME/.gopath/bin
+
+#ADDING VIM-GO PLUGIN
+pushd ~/.vim/bundle
+git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
+popd
+
+#ADDING VIM-GO CONFIG TO VIMRC
+echo '
+let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 1
+let g:go_fmt_fail_silently = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_build_constraints = 1
+' >> ~/.vimrc
+
+#YOU HAVE TO USE GOIMPORTS
+go get golang.org/x/tools/cmd/goimports
+echo "Don't forget to run :GoInstallBinaries(inside vim)"

@@ -1,0 +1,17 @@
+#!/bin/bash
+sudo apt install vim vim-gtk curl
+
+mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+pushd ~/.vim/bundle
+git clone https://github.com/scrooloose/syntastic.git
+#git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
+popd
+
+cat .vimrc >> ~/.vimrc
+echo "
+execute pathogen#infect()
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
+let g:syntastic_ignore_files = ['.asm','.java']
+" >> ~/.vimrc

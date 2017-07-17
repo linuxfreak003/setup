@@ -1,0 +1,27 @@
+#!/bin/bash
+
+sudo apt install curl build-essential m4 ocaml opam camlp4-extra ocaml-native-compilers
+
+opam init
+eval `opam config env`
+
+opam install core utop async yojson core_extended core_bench cohttp async_graphics cryptokit menhir lablgl
+
+echo '
+#use "topfind";;
+#thread;;
+#camlp4o;;
+#require "core.top";;
+#require "core.syntax";;
+open Core.Std;;
+' >> ~/.ocamlinit
+
+opam install merlin
+
+echo "
+let g:opamshare = substitute(system('opam config var share'),'\n','','''')
+execute \"set rtp+=\" . g:opamshare . \"/merlin/vim\"
+" >> ~/.vimrc
+
+echo "eval \`opam config env\`
+" >> ~/.bashrc
