@@ -21,6 +21,7 @@ read name
 git config --global user.email "$email"
 git config --global user.name "$name"
 git config --global push.default simple
+git config --global alias.ss "status -s"
 
 #Install newest version of Go
 sudo add-apt-repository ppa:longsleep/golang-backports
