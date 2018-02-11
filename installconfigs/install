@@ -1,7 +1,11 @@
 #!/bin/bash
+
+# Download and install chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt install -f
 
+# Install extra media stuff
 sudo apt install vlc vlc-plugin-notify
 sudo apt install steam
 sudo apt install freeglut3 freeglut3-dev
@@ -9,6 +13,7 @@ sudo apt install ubuntu-restricted-extras
 sudo apt install libavcodec-extra
 sudo apt install curl
 
+# Setup git profile
 echo "Enter your email (for git):"
 read email
 echo "Enter your name (for git):"
@@ -17,15 +22,28 @@ git config --global user.email "$email"
 git config --global user.name "$name"
 git config --global push.default simple
 
-pushd ~/
-git clone git@github.com:linuxfreak003/homework.git
-git clone git@github.com:linuxfreak003/configs.git
-git clone git@github.com:linuxfreak003/mandelbrot.git
-popd
+#Install newest version of Go
+sudo add-apt-repository ppa:longsleep/golang-backports
+sudo apt update
+sudo apt install golang-go
 
-mkdir ~/setup
-pushd ~/setup
-git clone git@github.com:linuxfreak003/vimconfigs.git
-git clone git@github.com:linuxfreak003/ocamlsetup.git
-git clone git@github.com:linuxfreak003/golangsetup.git
-popd
+# set natural scrolling
+gsettings set org.gnome.settings-daemon.peripherals.touchpad natural-scroll true
+gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll true
+
+#Window buttons on left side
+gsettings set  org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
+
+# Install Signal
+curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
+sudo apt update
+sudo apt install signal-desktop
+
+# Install arc-theme
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
+sudo apt-key add - < Release.key
+sudo apt-get update && sudo apt-get install arc-theme
+
+
