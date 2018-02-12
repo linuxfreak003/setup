@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# fasd
+sudo add-apt-repository ppa:aacebedo/fasd
+sudo apt update
+sudo apt install fasd
+echo 'eval "$(fasd --init auto)"' >> ~/.zshrc
