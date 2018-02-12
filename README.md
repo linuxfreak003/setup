@@ -1,2 +1,3 @@
-#setup
+# setup
+
 Setup configs and files
