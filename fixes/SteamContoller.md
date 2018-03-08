@@ -3,7 +3,7 @@ Steam Controller not being detected
 # Solution
 Edit /lib/udev/rules.d/99-steam-perms.rules
 
-`
+```
 # This rule is needed for basic functionality of the controller in Steam and keyboard/mouse emulation
 SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", MODE="0666"
 
@@ -30,4 +30,4 @@ KERNEL=="hidraw*", KERNELS=="*054C:05C4*", MODE="0666"
 
 # DualShock 4 Slim over bluetooth hidraw
 KERNEL=="hidraw*", KERNELS=="*054C:09CC*", MODE="0666"
-`
+```

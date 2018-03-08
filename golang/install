@@ -13,6 +13,13 @@ export GOPATH=$HOME/.gopath
 export GOBIN=$HOME/.gopath/bin
 " >> ~/.bashrc
 
+echo "
+export PATH=$PATH:$HOME/.gopath/bin
+export GOPATH=$HOME/.gopath
+export GOBIN=$HOME/.gopath/bin
+" >> ~/.zshrc
+
+
 export PATH=$PATH:$HOME/.gopath/bin
 export GOPATH=$HOME/.gopath
 export GOBIN=$HOME/.gopath/bin
