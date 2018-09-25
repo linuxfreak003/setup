@@ -1,6 +1,6 @@
 "
 " NEOBUNDLE SECTION
-"
+" 
 " Required:
 set runtimepath^=~/.vim/bundle/neobundle.vim/
 
@@ -12,7 +12,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " ~~~~~~~~ MY BUNDLES HERE ~~~~~~~~~
-"
+"       
 " Note: You don't set neobundle setting in .gvimrc!
 "
 
@@ -22,7 +22,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides' " visualize indents
 let g:indent_guides_enable_on_vim_startup = 1 " enable on startup
 NeoBundle 'tpope/vim-commentary' " Commenting - Type gcc for one line, or gc*
 NeoBundle 'tpope/vim-repeat' " Plugin that other plugins use. Makes the repeat command '.' work
-NeoBundle 'tpope/vim-fugitive' " Git wrapper.
+NeoBundle 'tpope/vim-fugitive' " Git wrapper. 
 let minWidth = 4
 let maxWidth = 40
 "set statusline+=\[%h%m%r%{strpart(fugitive#statusline(),minWidth,maxWidth)} " manipulate string given by fugitive
@@ -50,6 +50,8 @@ NeoBundleCheck
 
 call neobundle#end() "neobundle end
 
+let g:airline#extensions#tabline#enabled = 1
+
 colorscheme solarized   " Do this first so that later commands aren't overwritten. All hail solarized light
 set background=light
 
@@ -59,7 +61,7 @@ set backspace=indent,eol,start
 set lines=50 " initial window size
 set columns=300 " initial window size
 
-set term=xterm-256color
+set term=xterm-256color 
 set t_Co=256        " use 256 colors
 syntax on           " enable syntax processing
 
@@ -128,5 +130,6 @@ augroup autocmds
 
   " Comment // for cpp and proto files
   autocmd FileType cpp,cc,proto setlocal commentstring=\/\/\ %s
+  autocmd VimEnter * :e ~/.vimrc | :bn
 
 augroup END
